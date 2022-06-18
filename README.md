@@ -1,8 +1,8 @@
 # Xylophone
-Simples aplicacao com teclas, com cada tecla gera um som do,re,mi,fa
+Simples aplicação com teclas, com cada tecla gera um som do,re,mi,fa
 
-## Motivacao
-Aprender novos eventos de buttoes no IOS e utilizar novos recursos
+## Motivação
+Aprender novos eventos de botões no IOS e utilizar novos recursos
 
 ## Feature
 - Para capturar um evento assim que é acionado o botão  pode usar o touch dow
