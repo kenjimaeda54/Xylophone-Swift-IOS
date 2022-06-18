@@ -1,59 +1,36 @@
-![App Brewery Banner](Documentation/AppBreweryBanner.png)
-
 # Xylophone
+Simples aplicacao com teclas, com cada tecla gera um som do,re,mi,fa
 
-## Our Goal
+## Motivacao
+Aprender novos eventos de buttoes no IOS e utilizar novos recursos
 
-The goal of this tutorial is to dive into a simple iOS recipe - how to play sound and use an Apple library called AVFoundation. The most important skill of a great programmer is being able to solve your own problems. We’ll do that by exploring StackOverflow, Apple Documentation and learning how to search for solutions effectively. By learning to use these tools, you’ll be able to start adding custom features to an app and get it to do what you want it to.
+## Feature
+- Para capturar um evento assim que é acionado o botão  pode usar o touch dow
+- Com esse recurso apliquei opacidade no botão 
+- Para acessar sons locais no projeto usei o [AVFoundation](https://developer.apple.com/documentation/avfoundation/audio_playback_recording_and_processing)
+- Bundle e objeto que consigo acessar recursos locais da aplicação
+- Aprendi casos de uso para ! e o ?
+- Com ! estou garantindo que aquela propriedade opcional vai existir, preciso tomar cuidado com essa abordagem, caso não exista o valor pode quebrar aplicativo
+- Com ? garanto que aquela propriedade e opcional
+- Toda vez que referencio um botão a função recebe automaticamente o selecionado  por sender
+- Assim todas propriedades do botão estão instanciadas no sender
 
+```swift
 
-## What you will create
-
-You will be making your first musical instrument! Music apps are so popular on the App Store that they even get their own category. So in this module, we’re going to make a colourful XyloPhone app. Get it? Ok, the jokes are bad, but remember, I only wrote the good ones... 
-
-## What you will learn
-
-* How to play sound using AVFoundation and AVAudioPlayer.
-* Understand Apple documentation and how to use StackOverflow.
-* Functions and methods in Swift. 
-* Data types.
-* Swift loops.
-* Variable scope.
-* The ViewController lifecycle.
-* Error handling in Swift.
-* Code refactoring.
-* Basic debugging.
-
-## Replacement Code
-
-```
-import UIKit
-import AVFoundation
-
-class ViewController: UIViewController {
-    
-    var player: AVAudioPlayer!
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
+   
+    @IBAction func handleKeyPress(_ sender: UIButton) {
+        playSound(soundName:sender.currentTitle!)
+        sender.alpha = 1
+        
     }
 
-    @IBAction func keyPressed(_ sender: UIButton) {
-        playSound()
-    }
-    
-    func playSound() {
-        let url = Bundle.main.url(forResource: "C", withExtension: "wav")
+  func playSound(soundName: String) {
+        let url = Bundle.main.url(forResource: soundName, withExtension: "wav")
         player = try! AVAudioPlayer(contentsOf: url!)
-        player.play()
-                
+        player?.play()
+    
     }
-}
+    
+
+
 ```
-
-
-
->This is a companion project to The App Brewery's Complete App Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
-
-![End Banner](Documentation/readme-end-banner.png)
-
